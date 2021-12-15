@@ -1,0 +1,120 @@
+1. git clone ...
+2. npm install webpack webpack-cli
+3. create in the same directory where package.json is 
+   a new file webpack.config.js
+4. In package.json, add "build": "webpack --mode production" 
+   to scripts.
+
+5. Within webpack.config.js add : 
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: 'babel-loader'
+        },
+      },
+    ],
+  },
+};
+6. In the terminal: npm install @babel/core @babel/preset-env @babel/preset-react babel-loader
+7. Add to webpack.config:  loader: 'babel-loader'
+8. create a new file in directory where package.json is: .babelrc
+9. Within .babelrc add: 
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}
+10. in terminal: npm install style-loader css-loader
+
+11. define a new rule in webpack-config:
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+};
+
+12. in terminal: npm install html-loader html-webpack-plugin
+
+13. define a new rule in webpack-config:
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
+    ],
+  },
+};
+
+????  13.1 in terminal: npm install --save-dev html-webpack-plugin
+
+14. In webpack-config add on top of the file:
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+15. Add plugin in webpack-config:
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
+};
+
+16. in terminal: npm install webpack-dev-server
+17. in terminal: npm install babel-loader
+
+17.1 in terminal: npm install sass-loader
+
+18. yarn build
+

@@ -20,6 +20,13 @@ module.exports = {
           loader: "html-loader",
         },
       },
+      {
+        test: /\.sass$/,
+        use: {
+          // [sass-loader](/loaders/sass-loader)
+          loader: "sass-loader",
+        },
+      },
     ],
   },
   plugins: [
